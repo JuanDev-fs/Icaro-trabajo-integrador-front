@@ -1,0 +1,13 @@
+.sidenav{
+    height: 100%;
+    width: 150px;
+}
+
+.containerButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+/* mat-icon{
+    margin-right: 10px;
+} */

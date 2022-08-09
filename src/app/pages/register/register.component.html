@@ -1,0 +1,69 @@
+<div id="containerForm">
+    
+    <form id="formularioRegister" [formGroup]="miFormulario" (ngSubmit)="guardar2()">
+
+        <mat-form-field appearance="outline">
+            <mat-label for="lastName">Apellido</mat-label>
+            <input matInput type="text" name="lastName" id="lastName" formControlName="lastName">
+            <!-- <mat-icon matSuffix>person</mat-icon> -->
+            <mat-hint *ngIf="validar('lastName')">El apellido debe tener al menos 5 letras</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label for="firstName">Nombre</mat-label>
+            <input matInput type="text" name="firstName" id="firstName" formControlName="firstName">
+            <!-- <mat-icon matSuffix>person</mat-icon> -->
+            <mat-hint *ngIf="validar('firstName')">El nombre debe tener al menos 5 letras</mat-hint>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline">
+            <mat-label for="username">Nombre de usuario</mat-label>
+            <input matInput type="text" name="username" id="username" formControlName="username">
+            <!-- <mat-icon matSuffix>person</mat-icon> -->
+            <mat-hint *ngIf="validar('userName')">El nombre de usuario debe tener al menos 5 letras</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label for="password">Contraseña</mat-label>
+            <input matInput type="password" name="password" id="password" formControlName="password" #password>
+            <!-- <mat-icon matSuffix>key</mat-icon> -->
+            <mat-hint *ngIf="validar('password')">Debe tener al menos 8 caracteres</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label for="confirmPassword">Repetir contraseña</mat-label>
+            <input matInput type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword" pattern="{{password.value}}">
+            <mat-hint *ngIf="validar('confirmPassword')" >Las dos contraseñas deden ser iguales</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label for="country">Pais</mat-label>
+            <mat-select formControlName="country">
+                <mat-option *ngFor="let country of countries; let indice=index" [value]="country.country" (click)="guardar(indice)" >
+                  {{country.country}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label for="city">Ciudad</mat-label>
+            <mat-select formControlName="city">
+                <mat-option *ngFor="let ciudad of ciudades2" [value]="ciudad" >
+                  {{ciudad}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <!-- [value]="ciudad.cities" -->
+
+
+
+        <button mat-stroked-button color="primary">Registrarse</button>
+    </form>
+    </div>
+    
+    <button mat-stroked-button color="primary" (click)="mostrar()">mostrar</button>
+    <button mat-stroked-button color="primary" (click)="mostrar2()">mostrar2</button>
+   

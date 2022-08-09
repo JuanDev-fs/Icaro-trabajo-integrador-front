@@ -1,0 +1,17 @@
+#containerForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    
+}
+
+#formularioRegister{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mat-form-field-appearance-outline{
+    width: 300px;
+}
