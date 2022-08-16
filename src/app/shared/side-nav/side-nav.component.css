@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: flex-start;
     /* justify-content: flex-end; */
+    /* color: rgb(244, 67, 54); */
     
 }
 mat-icon{
@@ -22,10 +23,11 @@ mat-icon{
 background-color: #FFD740;
 */
 .activebutton{
-    background-color: rgb(103, 58, 183);
+    background-color: rgb(112, 70, 185);
     /* background-color: rgb(255, 215, 64); */
     /* background-color: rgb(51, 51, 51); */
     color: white;
+    /* color: #FFD740; */
 }
 a{
     width: 100%;

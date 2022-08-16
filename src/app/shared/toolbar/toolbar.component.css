@@ -6,6 +6,20 @@
     margin-right: 20px;
   }
 
+  .titleToolbar2{
+   /*  color: black; */
+    color: #ffd740;
+    font-weight:300;
+    letter-spacing: 1px;
+    font-style: italic;
+  }
+
+  .titleToolbar{
+    /* font-size: 24px; */
+    /* color: #ffd740; */
+    letter-spacing: 1px;
+    font-weight:500;
+  }
 /*   .usernameToolbar{
     color: #6bb5bd;
   }
