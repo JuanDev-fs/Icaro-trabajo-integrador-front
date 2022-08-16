@@ -1,9 +1,8 @@
 #containerFormNewMemo{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin: 50px;
-    
+    margin: 50px;  
 }
 .containerText{
     width: 500px;

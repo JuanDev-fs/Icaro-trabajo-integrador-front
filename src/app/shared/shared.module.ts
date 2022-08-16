@@ -5,17 +5,20 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const components =[
   ToolbarComponent,
   SidebarComponent,
   SideNavComponent,
+  MessagesComponent
   
 ]
 
 @NgModule({
   declarations: [
-    components
+    components,
+    
   ],
   imports: [
     CommonModule,

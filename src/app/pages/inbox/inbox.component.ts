@@ -22,21 +22,38 @@ export class InboxComponent implements OnInit {
   inboxMemosV2:any[]=[];
   inboxMemos:Inbox[]=[];
   inboxMemosSubscription!:Subscription;
-
+  inboxMemosSubscription2!:Subscription;
   
 
-  displayedColumns: string[] = ['fecha', 'remitente', 'mensaje'];
+  // displayedColumns: string[] = ['fecha', 'remitente', 'mensaje'/* ,'id' */];
+  displayedColumns: string[] = ['remitente', 'mensaje', 'fecha'/* ,'id' */];
 
-  username:string='supermancito'
+  //username:string='lalamonte'
+  username:string = ''
+  
 
   constructor(private fb: FormBuilder,private apiMemoService:ApiMemoService) { }
 
   ngOnInit(): void {
-    //test apiMemoV2
+    this.username = localStorage.getItem('username') || "[]"
+
     this.inboxMemosSubscription = this.apiMemoService.getAllMessageInbox(this.username).subscribe((data: any[]) => {
+      console.log('log de data mensajes recibidos',data)
+      if(data.length>0){
+        this.armarTabla(data)
+      }
+       
+     })
+ 
+
+
+
+
+    //test apiMemoV2
+    /* this.inboxMemosSubscription = this.apiMemoService.getAllMessageInbox(this.username).subscribe((data: any[]) => {
      //this.inboxMemosV2=data
       this.armarTabla(data)
-    })
+    }) */
 
 
     //funciona para apiMemo
@@ -55,7 +72,9 @@ export class InboxComponent implements OnInit {
         let newMessageItem:any={
           remitente:arrayData[i].username,
           text:arrayData[i].mensajeEscrito[j].text,
-          createdAt:arrayData[i].mensajeEscrito[j].createdAt
+          createdAt:arrayData[i].mensajeEscrito[j].createdAt,
+          read:arrayData[i].mensajeEscrito[j].read,
+          messageId:arrayData[i].mensajeEscrito[j].id,
         }
         this.messageArray.push(newMessageItem)
       }
@@ -65,13 +84,30 @@ export class InboxComponent implements OnInit {
   }
   
 
-
+  //solo para test de mostrar array de mensajes creados
   mostrar(){
   console.log(this.messageArray);
   }
+
+
+  //click--> put read=false To read=true
+  markReadMessage(messageId:number, read:boolean){
+    if(read==false){
+      //mando el put
+      //desabilitado para test interno
+      this.inboxMemosSubscription2=this.apiMemoService.updateReadMessageStatus(this.username,messageId).subscribe()
+    }
+    console.log(messageId, read);
+  }
+
+
+//Destruyo las subscripciones al salir
+  /* ngOnDestroy():void{
+    this.inboxMemosSubscription.unsubscribe();
+   // this.inboxMemosSubscription2.unsubscribe();
+  } */
 }
 
-/**
- * TODO: hacer que muestre los mensajes nuevos
- * acomodar los mensajes por fecha reciente
- */
+
+//sockets
+//

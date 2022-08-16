@@ -10,11 +10,13 @@
     </div>
      -->
     <div class="containerButton">
-        <a mat-button routerLink="/create"><mat-icon>send</mat-icon>New</a>
-        <a mat-button routerLink="/inbox"><mat-icon>inbox</mat-icon>Inbox</a>
-        <a mat-button routerLink="/sent"><mat-icon>mail</mat-icon>Sent</a>
-        <a mat-button color="warn" routerLink="/logout"><mat-icon>logout</mat-icon>Logout</a>
+        <a mat-button routerLink="/create" routerLinkActive="activebutton"><mat-icon>create</mat-icon>Redactar</a>
+        <a mat-button routerLink="/inbox" routerLinkActive="activebutton"><mat-icon>inbox</mat-icon> Recibidos</a>
+        <a mat-button routerLink="/sent" routerLinkActive="activebutton"><mat-icon>send</mat-icon>Enviados</a>
+        <!-- <a mat-button color="warn" (click)="logout()"><mat-icon>logout</mat-icon>Logout</a> -->
     </div>
 </div>
 
 <!-- routerLinkActive="active" -->
+
+<!-- routerLink="/logout" routerLinkActive="activebutton" -->

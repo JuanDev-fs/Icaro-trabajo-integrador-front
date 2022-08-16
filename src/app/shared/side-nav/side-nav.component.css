@@ -1,13 +1,32 @@
 .sidenav{
     height: 100%;
-    width: 150px;
+    width: 140px;
+    
+    display: flex;
+    justify-content: center;
 }
 
 .containerButton{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    align-items: flex-start;
+    /* justify-content: flex-end; */
+    
 }
-/* mat-icon{
+mat-icon{
     margin-right: 10px;
-} */
+}
+
+/* 
+background-color: #FFD740;
+*/
+.activebutton{
+    background-color: rgb(103, 58, 183);
+    /* background-color: rgb(255, 215, 64); */
+    /* background-color: rgb(51, 51, 51); */
+    color: white;
+}
+a{
+    width: 100%;
+}

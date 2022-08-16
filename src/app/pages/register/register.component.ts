@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Route, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiMemoService } from 'src/app/service/api-memo.service';
 import { Usuarios } from 'src/app/usuarios.interface';
@@ -44,7 +45,11 @@ export class RegisterComponent implements OnInit {
 
   usuarios:Usuarios[]=[]
   usuariosSubscripcion!: Subscription;
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,private apiMemoService:ApiMemoService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private snackBar: MatSnackBar,
+    private apiMemoService:ApiMemoService, 
+    private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -54,7 +59,7 @@ export class RegisterComponent implements OnInit {
   } */
 
   //test
- mostrar(){
+/*  mostrar(){
   console.log(this.countries);
   console.log(this.countries[0].cities)
   console.log(this.ciudades);
@@ -62,7 +67,7 @@ export class RegisterComponent implements OnInit {
  mostrar2(){
   console.log(this.miFormulario);
   console.log(this.miFormulario.value);
- }
+ } */
 
 
  guardar(indice1: any){
@@ -98,7 +103,7 @@ export class RegisterComponent implements OnInit {
   //console.log(newUser);
   
   //con esto creo el mensaje pero no manejo la respuesta negativa del backend
-  this.apiMemoService.createUser(newUser).subscribe(data=>{
+  this.apiMemoService.createUser(newUser).subscribe((data)=>{
     console.log(data);
   })
   
@@ -107,6 +112,9 @@ export class RegisterComponent implements OnInit {
   /* this.apiMemoService.createUser(this.miFormulario.value).subscribe(data=>{
     console.log(data);
   }) */
+
+  
+  
   
   this.miFormulario.reset();
   console.log('formulario enviado');
@@ -116,6 +124,9 @@ export class RegisterComponent implements OnInit {
 
   openSnackBar(){
     this.snackBar.open('Formulario registrado con exito','cerrar')
+
+    this.router.navigate(['login']) //esto redirige a login
   }
+
 
 }

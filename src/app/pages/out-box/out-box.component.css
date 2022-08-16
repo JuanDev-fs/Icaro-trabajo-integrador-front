@@ -1,3 +1,16 @@
 table {
     width: 100%;
   }
+
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+    background-color: #fafafa
+  }
+
+  .containerTable{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    margin: 50px;  
+  }

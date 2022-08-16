@@ -1,13 +1,16 @@
 <mat-toolbar color="primary">
-  <a mat-icon-button routerLink="/"><mat-icon>home</mat-icon></a>
+  <a mat-icon-button ><mat-icon class="iconHome">menu</mat-icon></a>
   
-  <span>My App</span>
+  <span class="titleToolbar">My App</span>
   <span class="example-spacer"></span>
-  <div class="userDash" *ngIf="logged">
-    <span>{{username}}</span>
+  <div class="userDash" *ngIf="getUsersService.toolbar()">
+    
+    <span class="usernameToolbar">{{getUsersService.userNameToolbar}}</span>
+    <a mat-raised-button color="warn" (click)="logout()">Logout</a>
   </div>
+  
 
-  <div class="containerButtons" *ngIf="!logged">
+  <div class="containerButtons" *ngIf="!getUsersService.toolbar()">
     <a mat-button routerLink="/login">Log in</a>
     <a mat-raised-button color="accent" routerLink="/register">Sign Up</a>
   </div>
@@ -18,3 +21,15 @@
 <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
   <mat-icon>menu</mat-icon>
 </button> -->
+
+
+<!-- 
+
+<a mat-icon-button routerLink="/"><mat-icon class="iconHome">home</mat-icon></a>
+
+ -->
+
+ <!-- 
+esto va dentro del <a> del menu
+  routerLink="/inbox"
+  -->

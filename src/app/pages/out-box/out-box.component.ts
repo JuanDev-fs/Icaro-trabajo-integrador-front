@@ -13,20 +13,28 @@ export class OutBoxComponent implements OnInit {
   outBoxMemosV2:any[]=[]
   outBoxMemos:Inbox[]=[]
   inboxMemosSubscription!:Subscription;
+  showTable:boolean=false
 
-  displayedColumns: string[] = ['position', 'destinatario', 'mensaje'];
+  // displayedColumns: string[] = ['position', 'destinatario', 'mensaje'];
+  displayedColumns: string[] = [ 'destinatario', 'mensaje','fecha'];
 
-  username:string='supermancito'
+  //username:string='lalamonte'
+  username:string = ''
 
   constructor(private fb: FormBuilder,private apiMemoService:ApiMemoService) { }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('username') || "[]"
     //test apiMemoV2
     this.inboxMemosSubscription = this.apiMemoService.getAllMessageSent(this.username).subscribe((data: any[]) => {
-      console.log(data);
+      console.log('esto es data antes de hacer el if',data[0]);
+      //ver de hacer un if por erro de que no existe mensaje escrito cuando no tengo el token
+      if(data[0]){
+        this.outBoxMemosV2=data[0].mensajeEscrito
+        this.showTable=true
+        console.log(this.outBoxMemosV2)
+      }
       
-      this.outBoxMemosV2=data[0].mensajeEscrito
-      console.log(this.outBoxMemosV2)
       //console.log(this.outBoxMemosV2[0].mensajeEscrito)
     })
     //funciona con apiMemo
@@ -35,6 +43,9 @@ export class OutBoxComponent implements OnInit {
       console.log(this.outBoxMemos)
     }) */
   }
+
+
+  
 
 }
 

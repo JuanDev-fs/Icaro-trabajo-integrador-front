@@ -7,9 +7,12 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiMemoService } from './service/api-memo.service';
 import { MaterialModule } from './material/material.module';
+import { MessageService } from './service/message.service';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { GetUsersService } from './service/get-users.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,16 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [ApiMemoService],
+  providers: [
+    GetUsersService,
+    ApiMemoService,
+    MessageService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

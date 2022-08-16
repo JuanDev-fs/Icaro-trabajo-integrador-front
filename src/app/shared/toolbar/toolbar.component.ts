@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiMemoService } from 'src/app/service/api-memo.service';
+import { GetUsersService } from 'src/app/service/get-users.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,12 +11,40 @@ import { Component, OnInit } from '@angular/core';
 export class ToolbarComponent implements OnInit {
 
  // logged:boolean=true
-  logged:boolean=false
-  username:string="juancito33"
+  logged:boolean=true
+  username:string=" "
   
-  constructor() { }
+  constructor(private apiMemoService:ApiMemoService, public getUsersService:GetUsersService,private router:Router ) { }
 
   ngOnInit(): void {
+    /* this.logged =  */ /* this.isLogged() */
+    //this.username = localStorage.getItem('username') || '[]'
+  }
+
+  // isLogged(){
+  //   if(localStorage.getItem('username')){
+  //     return true
+  //   } else {
+  //     return false
+  //   }
+  // }
+
+  // isLogged(){
+  //   this.logged = this.apiMemoService.isAuth()
+  //   if(this.logged){
+  //     this.username = localStorage.getItem('username') || '[]'
+  //     this.getUsersService.userNameToolbar=this.username
+  //   } else {
+  //     this.username = ""
+  //   }
+  // }
+
+  logout(){
+    localStorage.removeItem('username')
+    localStorage.removeItem('token')
+    this.getUsersService.userNameToolbar = ''
+    this.getUsersService.opened=false
+    this.router.navigate(['login'])
   }
 
 }

@@ -1,3 +1,17 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+
+  .usernameToolbar{
+    margin-right: 20px;
+  }
+
+/*   .usernameToolbar{
+    color: #6bb5bd;
+  }
+  .titleToolbar{
+    color: black;
+  }
+  .iconHome{
+    color:#ffd740
+  } */

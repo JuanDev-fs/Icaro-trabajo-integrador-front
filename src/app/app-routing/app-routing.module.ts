@@ -7,6 +7,7 @@ import { RegisterComponent } from '../pages/register/register.component';
 import { InboxComponent } from '../pages/inbox/inbox.component';
 import { OutBoxComponent } from '../pages/out-box/out-box.component';
 import { CreateMemosComponent } from '../pages/create-memos/create-memos.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 
@@ -14,12 +15,12 @@ const routes:Routes = [
   
   {path:'login',title:'Login', component:LoginComponent},
   {path:'register',title:'Register',component:RegisterComponent},
-  {path:'inbox',title:'Inbox',component:InboxComponent},
-  {path:'sent',title:'OutBox',component:OutBoxComponent},
-  {path:'create',title:'New Memo',component:CreateMemosComponent},
+  {path:'inbox',title:'Inbox',component:InboxComponent,canActivate:[AuthGuard]},
+  {path:'sent',title:'OutBox',component:OutBoxComponent,canActivate:[AuthGuard]},
+  {path:'create',title:'New Memo',component:CreateMemosComponent,canActivate:[AuthGuard]},
   {path:'',title:'Home', component:HomeComponent},
   {path:'**',title:'Page Not Found', component:HomeComponent},
-  {path:'logout',redirectTo: '/', pathMatch: 'full'},
+  //{path:'logout',redirectTo: '/', pathMatch: 'full'},
 //redirectTo: '/first-component', pathMatch: 'full'
 ]
 

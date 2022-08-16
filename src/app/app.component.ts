@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetUsersService } from './service/get-users.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MyAppMemo';
+ 
+  
+
+  constructor(public getUsersService:GetUsersService){
+
+  }
+
 }

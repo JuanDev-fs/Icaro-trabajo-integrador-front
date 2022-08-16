@@ -4,16 +4,18 @@
 
 <div class="containerNav">
     
-<app-toolbar></app-toolbar>
+<app-toolbar></app-toolbar><!-- aca esta el titulode la app, login, register, username -->
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sideNav mode="side" opened >
-        <app-side-nav></app-side-nav>
+    <mat-sidenav #sideNav mode="side" [(opened)]="getUsersService.opened">
+        <app-side-nav></app-side-nav><!-- ACA esta el menu de acciones -->
     </mat-sidenav>
 
     <mat-sidenav-content>
         <router-outlet></router-outlet>
+        <app-messages></app-messages>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
 </div>
 
 
