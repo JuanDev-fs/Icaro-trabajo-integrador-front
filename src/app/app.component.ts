@@ -9,10 +9,13 @@ import { GetUsersService } from './service/get-users.service';
 export class AppComponent {
   title = 'MyAppMemo';
  
-  
+  stateSidenav:boolean=true
 
-  constructor(public getUsersService:GetUsersService){
+  constructor(public getUsersService:GetUsersService){}
 
+  reciboDatos($event:string){
+    //alert($event)
+    this.stateSidenav=!this.stateSidenav
   }
 
 }

@@ -4,9 +4,9 @@
 
 <div class="containerNav">
     
-<app-toolbar></app-toolbar><!-- aca esta el titulode la app, login, register, username -->
+<app-toolbar (actionButton)="reciboDatos($event)"></app-toolbar><!-- aca esta el titulode la app, login, register, username -->
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sideNav mode="side" [(opened)]="getUsersService.opened">
+    <mat-sidenav #sidenav mode="side" [(opened)]="stateSidenav" *ngIf="getUsersService.toolbar()"><!-- aca va el [(opened)] -->
         <app-side-nav></app-side-nav><!-- ACA esta el menu de acciones -->
     </mat-sidenav>
 
@@ -25,3 +25,14 @@
 <h1>Este es el side bars</h1> -->
 
 <!-- [inputSideNav]="sideNav" -->
+
+<!-- 
+
+[(opened)]="getUsersService.opened"
+
+ -->
+
+ <!-- 
+
+    [(opened)]="toggle"
+  -->

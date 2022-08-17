@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         console.log(data.token);
         localStorage.setItem('username',user.username)//Guardo username
         this.getUsersService.userNameToolbar = user.username
-        this.getUsersService.opened = true
+        //this.getUsersService.opened = true
         localStorage.setItem('token',data.token)
         console.log('esto es data',data.message)
         this.miFormularioLogin.reset();

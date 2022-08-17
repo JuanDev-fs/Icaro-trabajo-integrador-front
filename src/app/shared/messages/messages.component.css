@@ -1,0 +1,17 @@
+.messageContainer{
+    position: absolute;
+    bottom: 0px;
+    margin: 20px;
+    background-color: gray;
+    padding: 8px;
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.containerLog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}

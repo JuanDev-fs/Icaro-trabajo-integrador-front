@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-  <a mat-icon-button ><mat-icon class="iconHome">menu</mat-icon></a>
+  <ng-container *ngIf="getUsersService.toolbar()">
+    <a mat-icon-button (click)="onClickButton()"><mat-icon class="iconHome">menu</mat-icon></a>
+  </ng-container>
+  
   
   <h1><span class="titleToolbar">Hi</span><span class="titleToolbar2">there!</span></h1>
   
