@@ -8,14 +8,22 @@ import { GetUsersService } from './service/get-users.service';
 })
 export class AppComponent {
   title = 'MyAppMemo';
- 
-  stateSidenav:boolean=true
+  stateSidenav: boolean = true
 
-  constructor(public getUsersService:GetUsersService){}
+  constructor(public getUsersService: GetUsersService) { }
 
-  reciboDatos($event:string){
-    //alert($event)
-    this.stateSidenav=!this.stateSidenav
+  reciboDatos($event: string) {
+    this.stateSidenav = !this.stateSidenav
   }
 
+  isLargeScreen() {
+    const width = window.innerWidth /* || document.documentElement.clientWidth || document.body.clientWidth */;
+    console.log(window.innerWidth)
+      
+    if (width > 720) {
+        return true;
+    } else {
+        return false;
+    }
+  }
 }

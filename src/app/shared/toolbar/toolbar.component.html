@@ -8,8 +8,8 @@
   
   <span class="example-spacer"></span>
   <div class="userDash" *ngIf="getUsersService.toolbar()">
-    
-    <span class="usernameToolbar">{{getUsersService.userNameToolbar}}</span>
+    <!-- <span class="usernameToolbar">{{getUsersService.userNameToolbar}}</span> -->
+    <span class="usernameToolbar">{{getUsersService.getUser()}}</span>
     <a mat-raised-button color="warn" (click)="logout()">Logout</a>
   </div>
   

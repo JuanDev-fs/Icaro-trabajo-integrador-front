@@ -25,6 +25,10 @@ export class GetUsersService {
     }
   }
 
+  getUser(){
+    this.userNameToolbar = localStorage.getItem('username') || "[]"
+    return this.userNameToolbar
+  }
   /* sidenav(){
     if(this.apiMemoService.isAuth()){
       return true

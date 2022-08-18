@@ -1,23 +1,28 @@
-#containerFormNewMemo{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 20px;  
+#containerFormNewMemo {
+  /*  display: flex;
+    justify-content: flex-start; */
+  /* justify-content: flex-start;
+    align-items: center; */
+  max-width: 700px;
+  /* 17/08/2022 */
+  /* VER de dejar titulo a la izquierda o sacar, y dejar contenido en el centro */
+  margin: 20px;
 }
-.containerText{
-    width: 500px;
+
+.containerText {
+  width: 100%;
 }
 
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
+.containerUsers {
+  width: 100%;
+}
 
-  .example-full-width {
-    width: 100%;
-  }
 
-  .parrafoCaracteres{
-    text-align: right;
-  }
+
+.example-full-width {
+  width: 100%;
+}
+
+.parrafoCaracteres {
+  text-align: right;
+}
