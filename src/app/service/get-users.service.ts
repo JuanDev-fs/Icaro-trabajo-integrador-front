@@ -6,35 +6,24 @@ import { ApiMemoService } from './api-memo.service';
   providedIn: 'root'
 })
 export class GetUsersService {
+  userNameToolbar: string = ''
+  opened: boolean = false;
 
-  //private URL:string='http://localhost:3000/api/users'
+  constructor(private http: HttpClient, private apiMemoService: ApiMemoService) { }
 
-  userNameToolbar : string= ''
-  opened: boolean=false;
-  
-
-  constructor(private http:HttpClient, private apiMemoService:ApiMemoService) { }
-
-  toolbar(){
-    if(this.apiMemoService.isAuth()){
-      this.opened= true
+  toolbar() {
+    if (this.apiMemoService.isAuth()) {
+      this.opened = true
       return true
     } else {
-      this.opened=false
+      this.opened = false
       return false
     }
   }
 
-  getUser(){
+  getUser() {
     this.userNameToolbar = localStorage.getItem('username') || "[]"
     return this.userNameToolbar
   }
-  /* sidenav(){
-    if(this.apiMemoService.isAuth()){
-      return true
-    } else {
-      return false
-    }
-  } */
 
 }

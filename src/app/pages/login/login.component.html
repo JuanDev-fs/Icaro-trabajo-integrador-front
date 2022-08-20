@@ -1,21 +1,20 @@
 <div id="containerForm">
-    
     <form id="formularioLogin" [formGroup]="miFormularioLogin" (ngSubmit)="guardar()">
-        
+
         <mat-form-field appearance="outline">
             <mat-label for="userName">Nombre de usuario</mat-label>
             <input matInput type="text" name="userName" id="userName" formControlName="userName">
             <mat-icon matSuffix>person</mat-icon>
             <mat-hint *ngIf="validar('userName')">Nombre de usuario no existe</mat-hint>
         </mat-form-field>
-    
+
         <mat-form-field appearance="outline">
             <mat-label for="password">Contraseña</mat-label>
             <input matInput type="password" name="password" id="password" formControlName="password">
             <mat-icon matSuffix>key</mat-icon>
-        <mat-hint *ngIf="validar('password')">Contraseña incorrecta</mat-hint>
+            <mat-hint *ngIf="validar('password')">Contraseña incorrecta</mat-hint>
         </mat-form-field>
-        
+
         <button mat-stroked-button color="primary">Iniciar Sesión</button>
     </form>
-    </div>
+</div>

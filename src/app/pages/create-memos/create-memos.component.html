@@ -1,51 +1,39 @@
 <div id="containerFormNewMemo">
-  <form id="formularioEnvio" [formGroup]="miDashboard" (ngSubmit)="enviarMemo()">
+  <form id="formularioEnvio" [formGroup]="miDashboard" (ngSubmit)="sentMemo()">
 
     <div class="containerUsers">
-        <h1>Crear Mensajes</h1>
-    
-        <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label for="receiverId">Destinatarios</mat-label>
-            <mat-select formControlName="receiverId" multiple>
-              <ng-container *ngFor="let usuario of usuarios">
-                <mat-option *ngIf="usuario.username!=usernameSender" [value]="usuario.id"  >
-                  {{usuario.username}}
-                </mat-option>
-              </ng-container>
-            </mat-select>
-            <mat-hint *ngIf="validar('receiverId')">Ingrese algun destinatario</mat-hint>
-        </mat-form-field>
+      <h1>Redactar Mensajes</h1>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label for="receiverId">Destinatarios</mat-label>
+        <mat-select formControlName="receiverId" multiple>
+          <ng-container *ngFor="let usuario of usuarios">
+
+            <!-- este ngif asegura que no muestre en la lista de seleccion el username de la persona logeada -->
+            <!-- y tengo el id de cada username -->
+            <mat-option *ngIf="usuario.username!=usernameSender" [value]="usuario.id">
+              {{usuario.username}}
+            </mat-option>
+
+          </ng-container>
+        </mat-select>
+        <mat-hint *ngIf="validar('receiverId')">Ingrese algun destinatario</mat-hint>
+      </mat-form-field>
     </div>
 
     <div class="containerText">
-        <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Escriba su mensaje</mat-label>
-            <textarea matInput formControlName="text" rows="5"></textarea>
-            <mat-hint *ngIf="validar('text')">Ingrese un texto de no mas de 140 caracteres</mat-hint>
-          </mat-form-field>
-          <ng-container *ngIf="this.miDashboard.value.text">
-            <p class="parrafoCaracteres">Cantidad de caracteres restantes {{140-this.miDashboard.value.text.length}}</p>
-          </ng-container>
-          
-          
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Escriba su mensaje</mat-label>
+        <textarea matInput formControlName="text" rows="5"></textarea>
+        <mat-hint *ngIf="validar('text')">Ingrese un texto de no mas de 140 caracteres</mat-hint>
+      </mat-form-field>
+      <ng-container *ngIf="this.miDashboard.value.text">
+        <p class="parrafoCaracteres">Cantidad de caracteres restantes {{140-this.miDashboard.value.text.length}}</p>
+      </ng-container>
+
+
     </div>
-    
+
     <button mat-stroked-button color="primary">Enviar</button>
-</form>
+  </form>
 </div>
-
-
-
-<!-- 
-<button mat-raised-button color="primary">sendmemo</button>
-
- -->
-<!-- mat-stroked-button color="primary" -->
-
-
-<!-- 
-
-  <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id"  >
-                  {{usuario.username}}
-                </mat-option>
- -->

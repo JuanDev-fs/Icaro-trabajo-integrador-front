@@ -1,39 +1,21 @@
 <mat-toolbar color="primary">
   <ng-container *ngIf="getUsersService.toolbar()">
-    <a mat-icon-button (click)="onClickButton()"><mat-icon class="iconHome">menu</mat-icon></a>
+    <a mat-icon-button (click)="onClickButton()">
+      <mat-icon class="iconHome">menu</mat-icon>
+    </a>
   </ng-container>
-  
-  
+
   <h1><span class="titleToolbar">Hi</span><span class="titleToolbar2">there!</span></h1>
-  
+
   <span class="example-spacer"></span>
   <div class="userDash" *ngIf="getUsersService.toolbar()">
-    <!-- <span class="usernameToolbar">{{getUsersService.userNameToolbar}}</span> -->
     <span class="usernameToolbar">{{getUsersService.getUser()}}</span>
-    <a mat-raised-button color="warn" (click)="logout()">Logout</a>
+    <a mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</a>
   </div>
-  
+
 
   <div class="containerButtons" *ngIf="!getUsersService.toolbar()">
-    <a mat-button routerLink="/login">Log in</a>
-    <a mat-raised-button color="accent" routerLink="/register">Sign Up</a>
+    <a mat-button routerLink="/login">Iniciar Sesión</a>
+    <a mat-raised-button color="accent" routerLink="/register">Registrar</a>
   </div>
 </mat-toolbar>
-
-<!-- (click)="inputSideNav.toggle()" -->
-
-<!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
-  <mat-icon>menu</mat-icon>
-</button> -->
-
-
-<!-- 
-
-<a mat-icon-button routerLink="/"><mat-icon class="iconHome">home</mat-icon></a>
-
- -->
-
- <!-- 
-esto va dentro del <a> del menu
-  routerLink="/inbox"
-  -->

@@ -8,7 +8,7 @@ import { GetUsersService } from './service/get-users.service';
 })
 export class AppComponent {
   title = 'MyAppMemo';
-  stateSidenav: boolean = true
+  stateSidenav: boolean = true //ver si dejo el 404 de page not found
 
   constructor(public getUsersService: GetUsersService) { }
 
@@ -17,13 +17,13 @@ export class AppComponent {
   }
 
   isLargeScreen() {
-    const width = window.innerWidth /* || document.documentElement.clientWidth || document.body.clientWidth */;
+    const width = window.innerWidth;
     console.log(window.innerWidth)
-      
+
     if (width > 720) {
-        return true;
+      return true;
     } else {
-        return false;
+      return false;
     }
   }
 }

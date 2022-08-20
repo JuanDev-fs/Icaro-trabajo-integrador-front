@@ -13,56 +13,47 @@ import { UsuarioLogin } from 'src/app/usuariosLogin.interface';
 export class LoginComponent implements OnInit {
   hide = true;
 
-  miFormularioLogin:FormGroup=this.fb.group({
-    'userName':[,[Validators.required/* ,Validators.minLength(5) */]],
-    'password':[,[Validators.required/* ,Validators.minLength(8) */]]
+  miFormularioLogin: FormGroup = this.fb.group({
+    'userName': [, [Validators.required]],
+    'password': [, [Validators.required]]
   })
 
   constructor(
     private fb: FormBuilder,
-    private apiMemoService:ApiMemoService,
-    private router:Router,
-    private getUsersService:GetUsersService
-    ) { }
+    private apiMemoService: ApiMemoService,
+    private router: Router,
+    private getUsersService: GetUsersService
+  ) { }
 
   ngOnInit(): void {
   }
 
   //validaciones
-  validar(campo:string){
+  validar(campo: string) {
     return this.miFormularioLogin.controls[campo]?.errors && this.miFormularioLogin.controls[campo]?.touched
   }
 
-  guardar(){
-    if(this.miFormularioLogin.invalid){
+  guardar() {
+    if (this.miFormularioLogin.invalid) {
       this.miFormularioLogin.markAllAsTouched();
       return;
     }
-    console.log(this.miFormularioLogin.value)
-    let user:UsuarioLogin = {
-      username:this.miFormularioLogin.value.userName,
-      password:this.miFormularioLogin.value.password
+    //guardo usuario recibido
+    let user: UsuarioLogin = {
+      username: this.miFormularioLogin.value.userName,
+      password: this.miFormularioLogin.value.password
     }
 
-    this.apiMemoService.login(user).subscribe(data=>{
-      if(data.token){
-        console.log(data.token);
-        localStorage.setItem('username',user.username)//Guardo username
+    this.apiMemoService.login(user).subscribe(data => {
+      if (data.token) {
+        localStorage.setItem('username', user.username)//Guardo username
         this.getUsersService.userNameToolbar = user.username
-        //this.getUsersService.opened = true
-        localStorage.setItem('token',data.token)
-        console.log('esto es data',data.message)
+        localStorage.setItem('token', data.token)
         this.miFormularioLogin.reset();
-        console.log('formulario enviado');
-
         this.router.navigate(['inbox'])
       }
-      //console.log(data.token);
     })
-    //this.miFormularioLogin.reset();
-    //console.log('formulario enviado');
-    //console.log(this.miFormularioLogin.value)
-    }
+  }
 
 
 }

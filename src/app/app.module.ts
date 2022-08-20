@@ -32,9 +32,9 @@ import { GetUsersService } from './service/get-users.service';
     ApiMemoService,
     MessageService,
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptorService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

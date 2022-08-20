@@ -12,14 +12,16 @@ export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token')
 
-    if(token){
+    if (token) {
       const cloned = req.clone({
-        headers:req.headers.set('Authorization',
-        'Bearer '+token)
+        headers: req.headers.set('Authorization',
+          'Bearer ' + token)
       })
       return next.handle(cloned)
-    }else{
+    } else {
       return next.handle(req)
     }
   }
 }
+
+//Clono y armo el header con la informacion del token para enviar en cada request al back

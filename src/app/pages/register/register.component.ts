@@ -38,13 +38,12 @@ export class RegisterComponent implements OnInit {
   })
 
 
-
   ciudades =this.countries[0].cities
   ciudades2:any[]=[]
   usuario:any[]=[]
-
   usuarios:Usuarios[]=[]
   usuariosSubscripcion!: Subscription;
+
   constructor(
     private fb: FormBuilder, 
     private snackBar: MatSnackBar,
@@ -54,44 +53,23 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /* ngOnDestroy() {
-    this.usuariosSubscripcion.unsubscribe();
-  } */
-
-  //test
-/*  mostrar(){
-  console.log(this.countries);
-  console.log(this.countries[0].cities)
-  console.log(this.ciudades);
- }
- mostrar2(){
-  console.log(this.miFormulario);
-  console.log(this.miFormulario.value);
- } */
-
-
- guardar(indice1: any){
-  console.log(indice1);
-  this.ciudades2 =this.countries[indice1].cities
-  console.log(this.ciudades2);
+ //guardo indice del pais, y con eso obtengo las ciudades de ese pais
+ saveIndex(indexCountry: any){
+  this.ciudades2 =this.countries[indexCountry].cities
  }
 
 
  //validaciones
-
  validar(campo:string){
   return this.miFormulario.controls[campo]?.errors && this.miFormulario.controls[campo]?.touched
 }
 
- guardar2(){
+register(){
   if(this.miFormulario.invalid){
     this.miFormulario.markAllAsTouched();
     return;
   }
-  //this.usuario.push(this.miFormulario.value)//guardo usuarios en array
-  //console.log(this.usuario);
-  
-  console.log(this.miFormulario.value);
+
   let newUser:Usuarios={
     lastName:this.miFormulario.value.lastName,
     firstName:this.miFormulario.value.firstName,
@@ -100,24 +78,14 @@ export class RegisterComponent implements OnInit {
     country:this.miFormulario.value.country,
     city:this.miFormulario.value.city
   }
-  //console.log(newUser);
   
-  //con esto creo el mensaje pero no manejo la respuesta negativa del backend
   this.apiMemoService.createUser(newUser).subscribe((data)=>{
     console.log(data);
   })
   
-
-
-  /* this.apiMemoService.createUser(this.miFormulario.value).subscribe(data=>{
-    console.log(data);
-  }) */
-
-  
-  
-  
   this.miFormulario.reset();
   console.log('formulario enviado');
+  
   this.openSnackBar()
   
   }
@@ -130,3 +98,5 @@ export class RegisterComponent implements OnInit {
 
 
 }
+
+//Areglar si existe usuario que no redirija, y que no muestre mensaje de snackbar de usuario creado con exito

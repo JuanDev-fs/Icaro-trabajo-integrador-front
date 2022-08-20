@@ -8,20 +8,21 @@ import { InboxComponent } from '../pages/inbox/inbox.component';
 import { OutBoxComponent } from '../pages/out-box/out-box.component';
 import { CreateMemosComponent } from '../pages/create-memos/create-memos.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 
 
 
-const routes:Routes = [
-  
-  {path:'login',title:'Login', component:LoginComponent},
-  {path:'register',title:'Register',component:RegisterComponent},
-  {path:'inbox',title:'Inbox',component:InboxComponent,canActivate:[AuthGuard]},
-  {path:'sent',title:'OutBox',component:OutBoxComponent,canActivate:[AuthGuard]},
-  {path:'create',title:'New Memo',component:CreateMemosComponent,canActivate:[AuthGuard]},
-  {path:'',title:'Home', component:HomeComponent},
-  {path:'**',title:'Page Not Found', component:HomeComponent},
+const routes: Routes = [
+
+  { path: 'login', title: 'Login', component: LoginComponent },
+  { path: 'register', title: 'Register', component: RegisterComponent },
+  { path: 'inbox', title: 'Inbox', component: InboxComponent, canActivate: [AuthGuard] },
+  { path: 'sent', title: 'OutBox', component: OutBoxComponent, canActivate: [AuthGuard] },
+  { path: 'create', title: 'New Memo', component: CreateMemosComponent, canActivate: [AuthGuard] },
+  { path: '', title: 'Home', component: HomeComponent },
+  { path: '**', title: 'Page Not Found', component: PageNotFoundComponent },
+  //{path:'**',title:'Page Not Found', component:HomeComponent},
   //{path:'logout',redirectTo: '/', pathMatch: 'full'},
-//redirectTo: '/first-component', pathMatch: 'full'
 ]
 
 @NgModule({
@@ -30,7 +31,7 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

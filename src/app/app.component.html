@@ -1,38 +1,18 @@
-<!-- <app-toolbar></app-toolbar>
-<app-sidebar></app-sidebar> -->
-<!-- <app-home></app-home> -->
-
 <div class="containerNav">
-    
-<app-toolbar (actionButton)="reciboDatos($event)"></app-toolbar><!-- aca esta el titulode la app, login, register, username -->
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [(opened)]="stateSidenav" *ngIf="getUsersService.toolbar()"><!-- aca va el [(opened)] -->
-        <app-side-nav></app-side-nav><!-- ACA esta el menu de acciones -->
-    </mat-sidenav>
 
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-        <app-messages></app-messages>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    <app-toolbar (actionButton)="reciboDatos($event)"></app-toolbar>
+    <!-- aca esta el titulode la app, login, register, username -->
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [(opened)]="stateSidenav"
+            *ngIf="getUsersService.toolbar()">
+            <!-- aca va el [(opened)] -->
+            <app-side-nav></app-side-nav><!-- ACA esta el menu de acciones -->
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+            <app-messages></app-messages>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 
 </div>
-
-
-                <!-- <router-outlet></router-outlet> -->
-
-                <!-- <app-toolbar></app-toolbar>
-<h1>Este es el side bars</h1> -->
-
-<!-- [inputSideNav]="sideNav" -->
-
-<!-- 
-
-[(opened)]="getUsersService.opened"
-
- -->
-
- <!-- 
-
-    [(opened)]="toggle"
-  -->

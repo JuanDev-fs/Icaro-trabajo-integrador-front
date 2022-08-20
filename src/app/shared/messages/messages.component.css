@@ -1,4 +1,4 @@
-.messageContainer{
+.messageContainer {
     position: absolute;
     bottom: 0px;
     margin: 20px;
@@ -7,9 +7,11 @@
     padding: 8px;
     border-radius: 5px;
     color: whitesmoke;
+    overflow-y: auto;
+    max-height: 75px;
 }
 
-.containerLog{
+.containerLog {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

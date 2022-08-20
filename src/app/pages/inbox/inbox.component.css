@@ -1,10 +1,10 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
 
-.new{
+.new {
   color: rgb(0, 0, 0);
-  font-weight:500;
+  font-weight: 500;
 }
 
 .mat-row:hover .mat-cell {
@@ -13,30 +13,27 @@ table {
 }
 
 
-.containerTable{
+.containerTable {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* align-items: center; */
-  margin: 20px;  
+  margin: 20px;
 }
 
-.parrafoCaracteres{
+.parrafoCaracteres {
   text-align: right;
 }
-/* 
-rgb(226, 223, 223);
-*/
+
 
 .mat-cell:first-of-type,
 .mat-cell:last-of-type,
 .mat-header-cell:first-of-type,
-.mat-header-cell:last-of-type{
+.mat-header-cell:last-of-type {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.mat-cell{
+.mat-cell {
   padding-top: 3px;
   padding-bottom: 3px;
 }
