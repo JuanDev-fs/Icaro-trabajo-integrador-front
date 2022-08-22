@@ -26,6 +26,19 @@ In the web browser of the mobile device you have to enter the ipv4 address of th
 
 To obtain the ipv4 address, run `ipconfig` from the windows terminal.
 
+## Preview
+<img src="readmePreview/iniciarSesion.png" height="200">
+<img src="readmePreview/registrar.png" height="200">
+<img src="readmePreview/redactar.png" height="200">
+<img src="readmePreview/redactarHideSidenav.png" height="200">
+<img src="readmePreview/redactarMovil.png" height="200">
+<img src="readmePreview/recibidos.png" height="200">
+<img src="readmePreview/recibidosHideSidenav.png" height="200">
+<img src="readmePreview/recibidosMovil.png" height="200">
+<img src="readmePreview/enviados.png" height="200">
+<img src="readmePreview/enviadosHideSidenav.png" height="200">
+
+
 ## CORS Notes
 To avoid the __CORS__ error due to __MyAppMemo__ running on `port: 4200` and __apiMemoV2__ on `port: 3000`, we have to enable CORS through the proxy configuration by creating a `src/proxy.conf.json` file inside the Angular root folder and also place the following code inside it.
 
