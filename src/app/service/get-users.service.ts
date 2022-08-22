@@ -11,6 +11,7 @@ export class GetUsersService {
 
   constructor(private http: HttpClient, private apiMemoService: ApiMemoService) { }
 
+  //permite mostrar/ocultar ciertas partes del toolbar si esta loggeado
   toolbar() {
     if (this.apiMemoService.isAuth()) {
       this.opened = true
@@ -21,6 +22,7 @@ export class GetUsersService {
     }
   }
 
+  //traigo el username para mostrar en el toolbar
   getUser() {
     this.userNameToolbar = localStorage.getItem('username') || "[]"
     return this.userNameToolbar

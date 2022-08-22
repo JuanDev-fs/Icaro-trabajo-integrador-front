@@ -1,27 +1,44 @@
 # MyAppMemo
 
+Stay connected with your coworkers, send messages to multiple recipients, and stay organized by reviewing your sent and received messages.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clone this project
+2. Go to the project folder `cd MyAppMemo`
+3. Install the dependencies `npm install`
+4. Run the application with `npm start`
+5. Navigate to `http://localhost:4200/`. 
 
-## Code scaffolding
+The application will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Running the application on mobile devices
 
-## Build
+To run the application on mobile devices you have to modify the `package.json` file, add in the script line, start, `"--host 0.0.0.0.0"`. For example
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`"start: "ng serve --host 0.0.0.0.0 --proxy-config proxy.conf.json"`.
 
-## Running unit tests
+In the web browser of the mobile device you have to enter the ipv4 address of the computer where you are running the application and the port. For example
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`192.168.xxx.xxx:4200`
 
-## Running end-to-end tests
+To obtain the ipv4 address, run `ipconfig` from the windows terminal.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## CORS Notes
+To avoid the __CORS__ error due to __MyAppMemo__ running on `port: 4200` and __apiMemoV2__ on `port: 3000`, we have to enable CORS through the proxy configuration by creating a `src/proxy.conf.json` file inside the Angular root folder and also place the following code inside it.
 
-## Further help
+```
+{
+    "/api/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+And add this line `--proxy-config proxy.conf.json` in the `package.json` file.
+
+

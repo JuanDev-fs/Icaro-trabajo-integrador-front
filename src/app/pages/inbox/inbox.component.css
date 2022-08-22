@@ -7,6 +7,10 @@ table {
   font-weight: 500;
 }
 
+.old {
+  background-color: rgba(0, 0, 0, 0.051)
+}
+
 .mat-row:hover .mat-cell {
   border-color: currentColor;
   background-color: #fafafa
@@ -36,4 +40,8 @@ table {
 .mat-cell {
   padding-top: 3px;
   padding-bottom: 3px;
+}
+
+.alert{
+  margin: 4px;
 }

@@ -26,7 +26,6 @@ export class InboxComponent implements OnInit {
     this.username = localStorage.getItem('username') || "[]"
 
     this.inboxMemosSubscription = this.apiMemoService.getAllMessageInbox(this.username).subscribe((data: any[]) => {
-      console.log('log de data mensajes recibidos', data)
       if (data.length > 0) {
         this.buildMessageTable(data)
       }

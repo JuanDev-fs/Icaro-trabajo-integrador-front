@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NewMessage } from 'src/app/newMessage.interface';
 import { ApiMemoService } from 'src/app/service/api-memo.service';
-import { MessageService } from 'src/app/service/message.service';
 import { UsuariosRx } from 'src/app/usuariosRx.interface';
 
 @Component({
@@ -26,7 +25,7 @@ export class CreateMemosComponent implements OnInit {
     'text': ['', [Validators.required, Validators.maxLength(140)]]
   })
 
-  constructor(private fb: FormBuilder, private apiMemoService: ApiMemoService, private messageService: MessageService) { }
+  constructor(private fb: FormBuilder, private apiMemoService: ApiMemoService) { }
 
  
   ngOnInit(): void {
@@ -71,13 +70,9 @@ export class CreateMemosComponent implements OnInit {
     });
 
     //envio el array de mensajes a la api
-    this.usernameSenderSubscription = this.apiMemoService.createNewMessage(this.usernameSender, this.messageArray).subscribe(data => {
-      console.log(data);
-    })
+    this.usernameSenderSubscription = this.apiMemoService.createNewMessage(this.usernameSender, this.messageArray).subscribe()
     //reseteo banderas del formulario
     this.miDashboard.reset();
-    //agrego un nuevo mensaje al servicio de mensajes
-    this.messageService.add(`Create Memos Component: Create new memos`);
   }
 
 

@@ -11,8 +11,6 @@ export class ToolbarComponent implements OnInit {
 
   @Output() actionButton: EventEmitter<string> = new EventEmitter<string>(); //output hijo -->padre
 
-
-  // logged:boolean=true
   logged: boolean = true
   username: string = " "
 

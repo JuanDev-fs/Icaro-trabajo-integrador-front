@@ -17,3 +17,5 @@ export class MessageService {
 
   constructor() { }
 }
+
+//No se usa, se deja para futuras actualizaciones

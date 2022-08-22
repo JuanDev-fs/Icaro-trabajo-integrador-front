@@ -27,76 +27,84 @@ export class RegisterComponent implements OnInit {
     { country: "Venezuela", cities: ["Acarigua", "Barcelona", "Barinas", "Barquisimeto", "Cabimas", "Caracas", "Caripito", "Carora", "Carúpano", "Ciudad Bolívar", "Ciudad Guayana", "Coro", "Cumaná", "El Tigre", "Guanare", "Guasdualito", "La Guaira", "Los Teques", "Maracaibo", "Maracay", "Maturín", "Mérida", "Puerto Cabello", "Puerto La Cruz", "Punto Fijo", "San Antonio", "San Carlos", "San Cristóbal", "San Felipe", "San Fernando", "San Juan de los Morros", "Trujillo", "Tucupita", "Valencia", "Valera", "Valle de la Pascua"] }
   ]
 
-  miFormulario:FormGroup=this.fb.group({
-    'lastName':[,[Validators.required,Validators.minLength(3)]],
-    'firstName':[,[Validators.required,Validators.minLength(3)]],
-    'username':[,[Validators.required,Validators.minLength(5)]],
-    'password':[,[Validators.required,Validators.minLength(8)]],
-    'confirmPassword':[,[Validators.required,Validators.minLength(8)]],
-    'country':[,Validators.required],
-    'city':[,Validators.required]
+  miFormulario: FormGroup = this.fb.group({
+    'lastName': [, [Validators.required, Validators.minLength(3)]],
+    'firstName': [, [Validators.required, Validators.minLength(3)]],
+    'username': [, [Validators.required, Validators.minLength(5)]],
+    'password': [, [Validators.required, Validators.minLength(8)]],
+    'confirmPassword': [, [Validators.required, Validators.minLength(8)]],
+    'country': [, Validators.required],
+    'city': [, Validators.required]
   })
 
 
-  ciudades =this.countries[0].cities
-  ciudades2:any[]=[]
-  usuario:any[]=[]
-  usuarios:Usuarios[]=[]
+  ciudades = this.countries[0].cities
+  ciudades2: any[] = []
+  usuario: any[] = []
+  usuarios: Usuarios[] = []
   usuariosSubscripcion!: Subscription;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private apiMemoService:ApiMemoService, 
-    private router:Router) { }
+    private apiMemoService: ApiMemoService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
- //guardo indice del pais, y con eso obtengo las ciudades de ese pais
- saveIndex(indexCountry: any){
-  this.ciudades2 =this.countries[indexCountry].cities
- }
-
-
- //validaciones
- validar(campo:string){
-  return this.miFormulario.controls[campo]?.errors && this.miFormulario.controls[campo]?.touched
-}
-
-register(){
-  if(this.miFormulario.invalid){
-    this.miFormulario.markAllAsTouched();
-    return;
+  //guardo indice del pais, y con eso obtengo las ciudades de ese pais
+  saveIndex(indexCountry: any) {
+    this.ciudades2 = this.countries[indexCountry].cities
   }
 
-  let newUser:Usuarios={
-    lastName:this.miFormulario.value.lastName,
-    firstName:this.miFormulario.value.firstName,
-    username:this.miFormulario.value.username,
-    password:this.miFormulario.value.password,
-    country:this.miFormulario.value.country,
-    city:this.miFormulario.value.city
-  }
-  
-  this.apiMemoService.createUser(newUser).subscribe((data)=>{
-    console.log(data);
-  })
-  
-  this.miFormulario.reset();
-  console.log('formulario enviado');
-  
-  this.openSnackBar()
-  
+
+  //validaciones
+  validar(campo: string) {
+    return this.miFormulario.controls[campo]?.errors && this.miFormulario.controls[campo]?.touched
   }
 
-  openSnackBar(){
-    this.snackBar.open('Formulario registrado con exito','cerrar')
+  register() {
+    if (this.miFormulario.invalid) {
+      this.miFormulario.markAllAsTouched();
+      return;
+    }
 
+    let newUser: Usuarios = {
+      lastName: this.miFormulario.value.lastName,
+      firstName: this.miFormulario.value.firstName,
+      username: this.miFormulario.value.username,
+      password: this.miFormulario.value.password,
+      country: this.miFormulario.value.country,
+      city: this.miFormulario.value.city
+    }
+
+    this.apiMemoService.createUser(newUser).subscribe(
+      {
+        next: (data) => {
+          if (data) {
+            this.miFormulario.reset();
+            this.openSnackBar()
+          }
+
+        },
+        error: (e) => {
+          if (e.error == "Usuario ya existe") {
+            this.snackBar.open('Este username ya existe, elija otro', 'cerrar')
+          }
+          if (e.status == 504) {
+            this.snackBar.open('Fallo el servidor, intente nuevamente', 'cerrar')
+          }
+        }
+      }
+    )
+
+  }
+
+  openSnackBar() {
+    this.snackBar.open('Usuario registrado con exito', 'cerrar')
     this.router.navigate(['login']) //esto redirige a login
   }
 
 
 }
-
-//Areglar si existe usuario que no redirija, y que no muestre mensaje de snackbar de usuario creado con exito

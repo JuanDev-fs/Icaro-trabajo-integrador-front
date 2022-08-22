@@ -8,20 +8,21 @@
     <!-- Name Column -->
     <ng-container matColumnDef="remitente">
       <th mat-header-cell *matHeaderCellDef> Remitente </th>
-      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false}"> {{element.remitente}} </td>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false,'old': element.read == true}">
+        {{element.remitente}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="mensaje">
       <th mat-header-cell *matHeaderCellDef> Mensaje </th>
-      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false}"
+      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false,'old': element.read == true}"
         (click)="markReadMessage(element.messageId,element.read)"> {{element.text}} </td>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef> Fecha </th>
-      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false}">
+      <td mat-cell *matCellDef="let element" [ngClass]="{'new': element.read == false,'old': element.read == true}">
         {{element.createdAt|date:'d/M/yy, h:mm a'}} </td>
     </ng-container>
 
@@ -33,8 +34,9 @@
 </div>
 
 <ng-template #error>
-  <p>Se produjo un error en la carga de la tabla</p>
+  <p class="alert">No tienes mensajes recibidos todavia, o exploto el servidor interestelar cuantico</p>
 </ng-template>
 
 <!-- a cada elemento de la fila aplico la clase new si mensaje es nuevo -->
 <!-- si hago click en el mensaje hace un put al back y modifica el campo read del mensaje -->
+<!-- si el mensaje ya fue leido pongo en gris el fondo de la fila -->

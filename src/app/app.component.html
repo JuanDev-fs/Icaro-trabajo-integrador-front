@@ -1,8 +1,9 @@
 <div class="containerNav">
 
-    <app-toolbar (actionButton)="reciboDatos($event)"></app-toolbar>
-    <!-- aca esta el titulode la app, login, register, username -->
+    <app-toolbar (actionButton)="receiveEvent($event)"></app-toolbar>
+    <!-- aca esta el titulo de la app, login, register, username -->
     <mat-sidenav-container class="example-container">
+
         <mat-sidenav #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [(opened)]="stateSidenav"
             *ngIf="getUsersService.toolbar()">
             <!-- aca va el [(opened)] -->

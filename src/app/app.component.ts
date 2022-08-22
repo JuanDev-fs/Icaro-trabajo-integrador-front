@@ -8,17 +8,21 @@ import { GetUsersService } from './service/get-users.service';
 })
 export class AppComponent {
   title = 'MyAppMemo';
-  stateSidenav: boolean = true //ver si dejo el 404 de page not found
+  stateSidenav: boolean = true
 
   constructor(public getUsersService: GetUsersService) { }
 
-  reciboDatos($event: string) {
+  //permite que al hacer click en el icono menu del toolbar se dispare un evento
+  //que permite abrir y cerrar el sidenav
+  receiveEvent($event: string) {
     this.stateSidenav = !this.stateSidenav
   }
 
+  //permite detectar el ancho de la pantalla y asi cambiar estado del sidebar
+  //si empuja el contenido en pantallas grandes o si esta sobre el contenido
+  //en pantallas mas chicas.
   isLargeScreen() {
     const width = window.innerWidth;
-    console.log(window.innerWidth)
 
     if (width > 720) {
       return true;
